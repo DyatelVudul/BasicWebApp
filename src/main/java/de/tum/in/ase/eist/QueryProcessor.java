@@ -17,6 +17,7 @@ public class QueryProcessor {
            return "Mykhailo Riabets";
         } else if (query.contains("number")){
             String tmp = query.replaceAll("%20", "");
+            tmp = query.replaceAll(" ", "");
             String formatted[] = tmp.split(":");
             String numbers[] = formatted[2].split(",");
             int max = Integer.MIN_VALUE;
@@ -25,7 +26,9 @@ public class QueryProcessor {
                 max = max < num ? num : max;
             }
             return Integer.toString(max);
-        }   else{
+        } else if (query.contains("plus")){
+            return "";
+        } else{
             return "";
         }
     }
